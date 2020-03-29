@@ -1,6 +1,4 @@
 /*
-* Name: Daniel Isaias Canales.
-* Account: 31211013
 * This project is in c ++ using data structures, implemented with
 * binary trees and their respective methods of managing binary trees.
 */
@@ -223,26 +221,22 @@ bool busqueda(Nodo *arbol,int n){
 	else if(arbol->dato == n){// si el nodo es igual al elemento
 	controles++;
 		cout<<"El nivel del nodo es : "<<controles<<endl;
-	
 		if(dateFather == 0){
 			cout<<"El nodo del arbol no tiene padre."<<endl;
 		}else{
 			cout<<"El nodo padre es: "<<dateFather<<endl;
 		}
-		
+			
 		if(arbol->izq == NULL){
 			cout<<"No tiene Hijo Izquierdo"<<endl;
 		}else{
 		cout<<"Hijo Izquierdo es: "<<arbol->izq->dato<<endl;	
-		}
-		
+		}	
 		if(arbol->der == NULL){
 			cout<<"No tiene Hijo Derecho."<<endl;
 		}else{
 		cout<<"Hijo Derecho es: "<<arbol->der->dato<<endl;	
-		} 
-		
-		
+		} 		
 		return true;
 	}
 	else if(n < arbol->dato){
@@ -255,9 +249,9 @@ bool busqueda(Nodo *arbol,int n){
 		dateFather = arbol->dato;
 		return busqueda(arbol->der,n); // busca los hijos derechos
 	}
-
 }
 
+//remove node in tree
 //eliminar nodo en el arbol
 void eliminar(Nodo *arbol,int n){
 	if(arbol == NULL){ // si esta vacio arboñ
@@ -274,7 +268,9 @@ void eliminar(Nodo *arbol,int n){
 	}
 }  
 
-
+/*
+* procedure to remove found node
+*/
 // funcion para eliminar nodo encontrado
 void eliminarNodo(Nodo *nodoEliminar){
 	if(nodoEliminar->izq && nodoEliminar->der){//si el nodo tiene hijo izq y der
@@ -297,6 +293,7 @@ void eliminarNodo(Nodo *nodoEliminar){
 }
 
 // funcion determinar el nodo mas izq posible
+//function determine the leftmost node possible
 Nodo *minimo(Nodo *arbol){
 	if(arbol == NULL){// si esta vacio arlbol
 		return NULL;
@@ -309,6 +306,11 @@ Nodo *minimo(Nodo *arbol){
 	}
 }
 
+/*
+* process that is responsible for replacing
+* one node with another.
+*
+*/
 void reemplazar(Nodo *arbol,Nodo *nuevoNodo){
 	if(arbol->padre){
 		//arbol->padre hay que asignar su nuevo hijo
@@ -324,7 +326,12 @@ void reemplazar(Nodo *arbol,Nodo *nuevoNodo){
 		nuevoNodo->padre = arbol->padre;
 	}
 }
-
+/*
+*
+*process that is responsible for destroying 
+*specific nodes in the search binary tree.
+*
+*/
 void destruirNodo(Nodo *nodo){
 	nodo->izq = NULL;
 	nodo->der = NULL;
@@ -332,6 +339,10 @@ void destruirNodo(Nodo *nodo){
 	delete nodo;
 }
 
+/*
+* function that is responsible for searching
+* the data within the tree.
+*/
 bool busquedaSimple(Nodo *arbol,int n){
 	
 	if(arbol == NULL){ // si esta vacio
